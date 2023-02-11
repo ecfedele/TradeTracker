@@ -53,6 +53,20 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="10" />
                     </Grid.ColumnDefinitions>
+                    <syncfusion:SfDataGrid Grid.Row="1" Grid.Column="1" x:Name="orderTable" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ColumnSizer="Star" AutoGenerateColumns="False">
+                        <syncfusion:SfDataGrid.Columns>
+                            <syncfusion:GridNumericColumn  HeaderText="Sequence No."     MappingName="SequenceNo" TextAlignment="Center" NumberDecimalDigits="0" />
+                            <syncfusion:GridTextColumn     HeaderText="Symbol"           MappingName="Symbol"     TextAlignment="Center" />
+                            <syncfusion:GridTextColumn     HeaderText="Instrument Type"  MappingName="Type"       TextAlignment="Center" />
+                            <syncfusion:GridTextColumn     HeaderText="Direction"        MappingName="Direction"  TextAlignment="Center" />
+                            <syncfusion:GridNumericColumn  HeaderText="Quantity"         MappingName="Quantity"   TextAlignment="Center" NumberDecimalDigits="3" />
+                            <syncfusion:GridTextColumn     HeaderText="Time"             MappingName="Time"       TextAlignment="Center"/>
+                            <syncfusion:GridCurrencyColumn HeaderText="Price"            MappingName="Price"      TextAlignment="Right" />
+                            <syncfusion:GridCurrencyColumn HeaderText="Commissions/Fees" MappingName="Fees"       TextAlignment="Right" />
+                            <syncfusion:GridCurrencyColumn HeaderText="Subtotal"         MappingName="Subtotal"   TextAlignment="Right" />
+                            <syncfusion:GridCurrencyColumn HeaderText="Balance"          MappingName="Balance"    TextAlignment="Right" />
+                        </syncfusion:SfDataGrid.Columns>
+                    </syncfusion:SfDataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Trade Log">
@@ -69,18 +83,18 @@
                     </Grid.ColumnDefinitions>
                     <syncfusion:SfDataGrid Grid.Row="1" Grid.Column="1" x:Name="tradeTable" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ColumnSizer="Star" AutoGenerateColumns="False">
                         <syncfusion:SfDataGrid.Columns>
-                            <syncfusion:GridNumericColumn HeaderText="Sequence No." MappingName="SequenceNo" NumberDecimalDigits="0" TextAlignment="Center"/>
-                            <syncfusion:GridTextColumn HeaderText="Symbol" MappingName="Symbol" TextAlignment="Center"/>
-                            <syncfusion:GridTextColumn HeaderText="Instrument Type" MappingName="Type" TextAlignment="Center"/>
-                            <syncfusion:GridTextColumn HeaderText="Direction" MappingName="Action" TextAlignment="Center"/>
-                            <syncfusion:GridTextColumn HeaderText="Quantity" MappingName="Quantity" TextAlignment="Center"/>
-                            <syncfusion:GridTextColumn HeaderText="Entry Time" MappingName="EntryTime" TextAlignment="Center"/>
-                            <syncfusion:GridCurrencyColumn HeaderText="Entry Price" MappingName="EntryPrice" TextAlignment="Right" />
-                            <syncfusion:GridCurrencyColumn HeaderText="Exit Price" MappingName="ExitPrice" TextAlignment="Right" />
-                            <syncfusion:GridTextColumn HeaderText="Exit Time" MappingName="ExitTime" TextAlignment="Center"/>
+                            <syncfusion:GridNumericColumn  HeaderText="Sequence No."     MappingName="SequenceNo" NumberDecimalDigits="0" TextAlignment="Center"/>
+                            <syncfusion:GridTextColumn     HeaderText="Symbol"           MappingName="Symbol"     TextAlignment="Center"/>
+                            <syncfusion:GridTextColumn     HeaderText="Instrument Type"  MappingName="Type"       TextAlignment="Center"/>
+                            <syncfusion:GridTextColumn     HeaderText="Direction"        MappingName="Action"     TextAlignment="Center"/>
+                            <syncfusion:GridTextColumn     HeaderText="Quantity"         MappingName="Quantity"   TextAlignment="Center"/>
+                            <syncfusion:GridTextColumn     HeaderText="Entry Time"       MappingName="EntryTime"  TextAlignment="Center"/>
+                            <syncfusion:GridCurrencyColumn HeaderText="Entry Price"      MappingName="EntryPrice" TextAlignment="Right" />
+                            <syncfusion:GridCurrencyColumn HeaderText="Exit Price"       MappingName="ExitPrice"  TextAlignment="Right" />
+                            <syncfusion:GridTextColumn     HeaderText="Exit Time"        MappingName="ExitTime"   TextAlignment="Center"/>
                             <syncfusion:GridCurrencyColumn HeaderText="Commissions/Fees" MappingName="Commission" TextAlignment="Right" />
-                            <syncfusion:GridCurrencyColumn HeaderText="Net Profit/Loss" MappingName="ProfitLoss" TextAlignment="Right" />
-                            <syncfusion:GridCurrencyColumn HeaderText="Balance" MappingName="Balance" />
+                            <syncfusion:GridCurrencyColumn HeaderText="Net Profit/Loss"  MappingName="ProfitLoss" TextAlignment="Right" />
+                            <syncfusion:GridCurrencyColumn HeaderText="Balance"          MappingName="Balance" />
                         </syncfusion:SfDataGrid.Columns>
                     </syncfusion:SfDataGrid>
                 </Grid>

@@ -1,9 +1,11 @@
 // ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗ 
-// ║ File:        Order.cs                                                                                        ║ 
+// ║ File:        EquityOrder.cs                                                                                  ║ 
 // ║ Project:     TradeTracker                                                                                    ║ 
 // ║ Author:      E. C. Fedele                                                                                    ║ 
 // ║ Date:        February 11, 2023                                                                               ║ 
-// ║ Description: Implementation of an Order object, which is used to indicate trade actions.                     ║
+// ║ Description: Implementation of an Order object specifically intended for Equity trades. Other than the value ║
+// ║              and reimplementation of the Direction field, this class is no different than the canonical      ║
+// ║              Order object.                                                                                   ║
 // ╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════╣ 
 // ║ Copyright (C) 2023 E. C. Fedele                                                                              ║ 
 // ║                                                                                                              ║ 
@@ -26,7 +28,7 @@ using TradeTracker.Data.Enumerations;
 
 namespace TradeTracker.Data
 {
-    public class Order : Transaction
+    public class EquityOrder : Order
     {
         private OrderDirection tradeDirection;
 
@@ -57,7 +59,7 @@ namespace TradeTracker.Data
         /// <param name="quantity">The quantity of asset transacted</param>
         /// <param name="time">The date and time of the transaction</param>
         /// <param name="price">The price the asset was purchased or sold at</param>
-        public Order(string accountId, string symbol, OrderDirection dir, decimal quantity, DateTime time, 
+        public EquityOrder(string accountId, string symbol, OrderDirection dir, decimal quantity, DateTime time, 
                      decimal price)
         {
             this.AccountId = accountId;
@@ -66,7 +68,7 @@ namespace TradeTracker.Data
             this.Price     = price;
             this.Fees      = 0.0m;
             this.Time      = time;
-            this.Direction = "ORDER";
+            this.Direction = "EQUITY";
             switch (dir) {
                 case OrderDirection.Buy: 
                     this.Type     = "BUY";
@@ -93,7 +95,7 @@ namespace TradeTracker.Data
         /// <param name="time">The date and time of the transaction</param>
         /// <param name="price">The price the asset was purchased or sold at</param>
         /// <param name="fees">Any fees or commissions associated with this trade</param>
-        public Order(string accountId, string symbol, OrderDirection dir, decimal quantity, DateTime time, 
+        public EquityOrder(string accountId, string symbol, OrderDirection dir, decimal quantity, DateTime time, 
                      decimal price, decimal fees)
         {
             this.AccountId = accountId;
@@ -102,7 +104,7 @@ namespace TradeTracker.Data
             this.Price     = price;
             this.Fees      = fees;
             this.Time      = time;
-            this.Direction = "ORDER";
+            this.Direction = "EQUITY";
             switch (dir) {
                 case OrderDirection.Buy: 
                     this.Type     = "BUY";
@@ -124,7 +126,7 @@ namespace TradeTracker.Data
         /// sign conventions observed here, the cost basis is always positive.
         /// </summary>
         /// <returns>The cost basis of the transaction</returns>
-        public decimal GetCostBasis()
+        public override decimal GetCostBasis()
         {
             return this.Quantity * this.Price;
         }
@@ -137,7 +139,7 @@ namespace TradeTracker.Data
         /// a programmatically-friendly manner without risking unusual behavior in the UI logic.
         /// </summary>
         /// <returns>The OrderDirection enumeration corresponding to the trade direction</returns>
-        public OrderDirection GetDirection()
+        public override OrderDirection GetDirection()
         {
             return this.tradeDirection;
         }
@@ -149,7 +151,7 @@ namespace TradeTracker.Data
         /// <returns>A 2-tuple in the form (foreground, background)</returns>
         public override Tuple<string, string> GetTypeCellColorization()
         {
-            return new Tuple<string, string>("#000000", "#FFFFFF");
+            return new Tuple<string, string>("#000000", "#00FFFF");
         }
 
         /// <summary>

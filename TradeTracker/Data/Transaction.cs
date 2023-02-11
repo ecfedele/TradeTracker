@@ -32,12 +32,20 @@ namespace TradeTracker.Data
         public string   AccountId;
         public string   Symbol;
         public string   Type;
+        public string   Direction;
         public decimal  Quantity;
         public decimal  Price;
         public decimal  Fees;
         public decimal  Subtotal;
         public decimal  RunningBalance;
         public DateTime Time;
+
+        #endregion
+
+        #region Inheritable methods
+
+        public abstract Tuple<string, string> GetTypeCellColorization();
+        public abstract Tuple<string, string> GetDirectionCellColorization();
 
         #endregion
     }

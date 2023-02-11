@@ -33,6 +33,7 @@ namespace TradeTracker.Data
         public string   AccountId      { get { return base.AccountId;      } set { base.AccountId = value;      } }
         public string   Symbol         { get { return base.Symbol;         } set { base.Symbol = value;         } }
         public string   Type           { get { return base.Type;           } set { base.Type = value;           } }
+        public string   Direction      { get { return base.Direction;      } set { base.Direction = value;      } }
         public decimal  Quantity       { get { return base.Quantity;       } set { base.Quantity = value;       } }
         public decimal  Price          { get { return base.Price;          } set { base.Price = value;          } } 
         public decimal  Fees           { get { return base.Fees;           } set { base.Fees = value;           } } 
@@ -55,7 +56,8 @@ namespace TradeTracker.Data
         {
             this.AccountId = accountId;
             this.Symbol    = sender;
-            this.Type      = "DEPOSIT";
+            this.Type      = "TRANSFER";
+            this.Direction = "DEPOSIT";
             this.Quantity  = 1.0m;
             this.Time      = depositTime;
             this.Price     = depositAmount;
@@ -75,12 +77,33 @@ namespace TradeTracker.Data
         {
             this.AccountId = accountId;
             this.Symbol    = sender;
-            this.Type      = "DEPOSIT";
+            this.Type      = "TRANSFER";
+            this.Direction = "DEPOSIT";
             this.Quantity  = 1.0m;
             this.Time      = depositTime;
             this.Price     = depositAmount;
             this.Fees      = fees;
             this.Subtotal  = this.Price - this.Fees;
+        }
+
+        /// <summary>
+        /// Inherited method from Transaction - provides the type cell colorization rule colors (in 6-char hex).
+        /// Used by the UI logic to color the Type cell accordingly.
+        /// </summary>
+        /// <returns>A 2-tuple in the form (foreground, background)</returns>
+        public override Tuple<string, string> GetTypeCellColorization()
+        {
+            return new Tuple<string, string>("#000000", "#FFFF00");
+        }
+
+        /// <summary>
+        /// Inherited method from Transaction - provides the direction cell colorization rule colors (in 6-char 
+        /// hex). Used by the UI logic to color the direction cell accordingly.
+        /// </summary>
+        /// <returns>A 2-tuple in the form (foreground, background)</returns>
+        public override Tuple<string, string> GetDirectionCellColorization()
+        {
+            return new Tuple<string, string>("#000000", "#FFFF00");
         }
 
         #endregion
