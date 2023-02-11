@@ -1,0 +1,102 @@
+﻿<syncfusion:RibbonWindow 
+        x:Class="TradeTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TradeTracker"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
+        xmlns:syncfusionskin="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+        syncfusionskin:SfSkinManager.VisualStyle="Office2010Black"
+        mc:Ignorable="d"
+        Title="TradeTracker" Height="1080" Width="1920">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Set up the Ribbon, the primary user interface for configuration and settings, among other things.  -->
+        <!-- Omit column and column span settings as this is a single-column layout.                            -->
+        <syncfusion:Ribbon Grid.Row="0" HorizontalAlignment="Center" Height="145" VerticalAlignment="Top">
+            <syncfusion:Ribbon.ApplicationMenu>
+                <syncfusion:ApplicationMenu IsPopupOpen="False"/>
+            </syncfusion:Ribbon.ApplicationMenu>
+            <syncfusion:Ribbon.QuickAccessToolBar>
+                <syncfusion:QuickAccessToolBar/>
+            </syncfusion:Ribbon.QuickAccessToolBar>
+            <syncfusion:RibbonTab Caption="Home">
+                <syncfusion:RibbonBar Header="Ribbon Bar 1"/>
+            </syncfusion:RibbonTab>
+            <syncfusion:RibbonTab Caption="Send/Receive"/>
+        </syncfusion:Ribbon>
+
+        <!-- Configure the TabControl with three panes: the main trade log, a statistical overview pane, and a  -->
+        <!-- charting pane which displays various statistical properties of the user's trading.                 -->
+        <TabControl Grid.Row="1">
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabPanel}">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="Order Log">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="10" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="10" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Trade Log">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="10" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="10" />
+                    </Grid.ColumnDefinitions>
+                    <syncfusion:SfDataGrid Grid.Row="1" Grid.Column="1" x:Name="tradeTable" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ColumnSizer="Star" AutoGenerateColumns="False">
+                        <syncfusion:SfDataGrid.Columns>
+                            <syncfusion:GridNumericColumn HeaderText="Sequence No." MappingName="SequenceNo" NumberDecimalDigits="0" TextAlignment="Center"/>
+                            <syncfusion:GridTextColumn HeaderText="Symbol" MappingName="Symbol" TextAlignment="Center"/>
+                            <syncfusion:GridTextColumn HeaderText="Instrument Type" MappingName="Type" TextAlignment="Center"/>
+                            <syncfusion:GridTextColumn HeaderText="Direction" MappingName="Action" TextAlignment="Center"/>
+                            <syncfusion:GridTextColumn HeaderText="Quantity" MappingName="Quantity" TextAlignment="Center"/>
+                            <syncfusion:GridTextColumn HeaderText="Entry Time" MappingName="EntryTime" TextAlignment="Center"/>
+                            <syncfusion:GridCurrencyColumn HeaderText="Entry Price" MappingName="EntryPrice" TextAlignment="Right" />
+                            <syncfusion:GridCurrencyColumn HeaderText="Exit Price" MappingName="ExitPrice" TextAlignment="Right" />
+                            <syncfusion:GridTextColumn HeaderText="Exit Time" MappingName="ExitTime" TextAlignment="Center"/>
+                            <syncfusion:GridCurrencyColumn HeaderText="Commissions/Fees" MappingName="Commission" TextAlignment="Right" />
+                            <syncfusion:GridCurrencyColumn HeaderText="Net Profit/Loss" MappingName="ProfitLoss" TextAlignment="Right" />
+                            <syncfusion:GridCurrencyColumn HeaderText="Balance" MappingName="Balance" />
+                        </syncfusion:SfDataGrid.Columns>
+                    </syncfusion:SfDataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Current Positions">
+                <Grid Background="#FFE5E5E5">
+                </Grid>
+            </TabItem>
+            <TabItem Header="Charts">
+                <Grid Background="#FFE5E5E5">
+                </Grid>
+            </TabItem>
+            <TabItem Header="Statistics">
+                <Grid Background="#FFE5E5E5">
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</syncfusion:RibbonWindow>
